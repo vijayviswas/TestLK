@@ -26,7 +26,7 @@
     app.state=@"";
     app.hideDefaultWebView=false;
     app.storeTokenInKeyChain=false;
-    [LIExplorer registerKey:@"TEST" withApplication:app staging:YES];
+    [LIExplorer registerKey:@"LIExplorer_Public" withApplication:app staging:YES];
        // Override point for customization after application launch.
     return YES;
 }
