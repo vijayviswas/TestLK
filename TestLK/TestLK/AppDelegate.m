@@ -27,6 +27,8 @@
     app.hideDefaultWebView=false;
     app.storeTokenInKeyChain=false;
     [LIExplorer registerKey:@"LIExplorer_Public" withApplication:app staging:YES];
+    NSLog(@"%@",[LIExplorer currentSDKVersion]);
+
        // Override point for customization after application launch.
     return YES;
 }

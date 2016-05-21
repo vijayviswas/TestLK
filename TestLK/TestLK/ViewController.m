@@ -22,26 +22,26 @@
     [super viewDidLoad];
     
     
-
+    
     //self.WebView.hidden=YES;
     /// Do any additional setup after loading the view, typically from a nib.
-
+    
     
 }
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     
-   
     
-    }
+    
+}
 -(void)loadShareVC
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     ShareViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"ShareViewController"];
     [self presentViewController:lvc animated:YES completion:nil];
     //[self sharelinkedin];
-
+    
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -58,8 +58,8 @@
     }
 }
 - (IBAction)StartEvent:(id)sender {
-
-       
+    
+    
     
     if(![LITokenHandler isValidToken])
     {
@@ -67,6 +67,11 @@
             [self dismissViewControllerAnimated:YES completion:nil];
             [self loadShareVC];
         } failureBlock:^(NSError *error) {
+            NSDictionary *userInfo = [error userInfo];
+            if([userInfo objectForKey:@"Url"])
+            {
+                NSLog(@"User clicked on link :%@",[userInfo objectForKey:@"Url"]);
+            }
             
         }];
         [self presentViewController:vc animated:YES completion:nil];
@@ -106,7 +111,11 @@
             [self dismissViewControllerAnimated:YES completion:nil];
             [self loadShareVC];
         } failureBlock:^(NSError *error) {
-            
+            NSDictionary *userInfo = [error userInfo];
+            if([userInfo objectForKey:@"Url"])
+            {
+                NSLog(@"User clicked on link :%@",[userInfo objectForKey:@"Url"]);
+            }
         }];
         vc.webViewNavigationNar=navBar;
         [self presentViewController:vc animated:YES completion:nil];
@@ -115,15 +124,15 @@
         [self loadShareVC];
     }
     
-
+    
 }
 
 - (IBAction)OPenCustomVC:(id)sender {
     
-     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-     CustomViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"LIAuthorizationVC"];
-     [self presentViewController:lvc animated:YES completion:nil];
-     return;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    CustomViewController *lvc = [storyboard instantiateViewControllerWithIdentifier:@"LIAuthorizationVC"];
+    [self presentViewController:lvc animated:YES completion:nil];
+    return;
     
 }
 @end
