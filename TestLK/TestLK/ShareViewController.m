@@ -8,6 +8,7 @@
 
 #import "ShareViewController.h"
 #import <LIExplorer/LIRestAPIHandlers.h>
+#import <LIExplorer/LITokenHandler.h>
 @interface ShareViewController ()
 
 @end
@@ -16,7 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleNames=[[NSMutableArray alloc] initWithObjects:@"Share comment",@"Share with specific values",@"Company share comment",@"Company Share with specific values",@"Get profile",@"Check if sharing is enabled for a company",@"Company profile",@"Statistics for a company page",@"Historical status update statistics about a company",@"Historical follower statistics about a company",@"Company's updates",@"single specific company update record for the company",@"Comments for a specific company update",@"Likes for a specific company update", nil];
+    self.titleNames=[[NSMutableArray alloc] initWithObjects:@"Share comment",@"Share with specific values",@"Company share comment",@"Company Share with specific values",@"Get profile",@"Check if sharing is enabled for a company",@"Company profile",@"Statistics for a company page",@"Historical status update statistics about a company",@"Historical follower statistics about a company",@"Company's updates",@"single specific company update record for the company",@"Comments for a specific company update",@"Likes for a specific company update",@"Logout", nil];
     // Do any additional setup after loading the view.
 }
 
@@ -170,38 +171,11 @@
             
         }];
     }
+    else{
+        [LITokenHandler clearToken];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
     
-    
-    
-    
-   
-
-    
-    
-    
-   
-   
-    
-    
-    
-   
-   
-     
-    
-    
-    
-    
-    
-   
-     
-    
-    
-    
-    
-     
-   
- 
-
 }
 /*
 #pragma mark - Navigation
